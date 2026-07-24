@@ -28,6 +28,7 @@
   .eyebrow::before{content:''; width:18px; height:1px; background:var(--buoy);}
   .wrap{ max-width:1180px; margin:0 auto; padding:0 40px; }
   a{ color:inherit; text-decoration:none; }
+html.no-scroll, html.no-scroll body{ overflow:hidden; height:100%; }
   img{max-width:100%; display:block;}
 
   /* TOP BAR — wraps season banner + nav so they scroll together as one fixed block */
@@ -412,11 +413,11 @@
       flex:0 0 200px !important; width:200px !important; height:200px !important;
     }
 
-    /* Mobile modal: fullscreen, like the burger menu (nav stays visible on top) */
-    #modalOverlay{ padding:0; align-items:stretch; justify-content:stretch; z-index:45; }
+    /* Mobile modal: fullscreen, covers nav + banner completely */
+    #modalOverlay{ padding:0; align-items:stretch; justify-content:stretch; }
     .modal-box{
       max-width:none; width:100%; height:100%; border-radius:0;
-      overflow-y:auto; padding:150px 24px 40px;
+      overflow-y:auto; padding:32px 24px 40px;
     }
 
     /* Mobile lightbox: photo fills the available width */

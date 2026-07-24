@@ -54,6 +54,7 @@ window.addEventListener('scroll', function(){
     document.getElementById('modalTitle').textContent = name;
     document.getElementById('modalSuccess').style.display = 'none';
     document.getElementById('modalOverlay').classList.add('open');
+    document.documentElement.classList.add('no-scroll');
     document.querySelectorAll('.modal-box textarea.autogrow').forEach(autoGrowTextarea);
     var sel = document.getElementById('modalModelSelect');
     var hasOption = Array.from(sel.options).some(function(o){ return o.value === name; });
@@ -61,6 +62,7 @@ window.addEventListener('scroll', function(){
   }
   function closeModal(){
     document.getElementById('modalOverlay').classList.remove('open');
+    document.documentElement.classList.remove('no-scroll');
   }
   function modalSubmit(e){
     e.preventDefault();
