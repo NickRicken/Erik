@@ -1,3 +1,34 @@
+/* SEASON BANNER */
+function closeSeasonBanner(){
+  var banner = document.getElementById('seasonBanner');
+  if(banner) banner.style.display = 'none';
+  try{ localStorage.setItem('seasonBannerClosed', '1'); }catch(e){}
+}
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    if(localStorage.getItem('seasonBannerClosed') === '1'){
+      var b = document.getElementById('seasonBanner');
+      if(b) b.style.display = 'none';
+    }
+  }catch(e){}
+
+  /* DESC TOGGLE — скрываем кнопку "Показать полностью", если текст и так укладывается в 10 строк */
+  document.querySelectorAll('.desc-toggle').forEach(function(btn){
+    var desc = btn.previousElementSibling;
+    if(!desc) return;
+    if(desc.scrollHeight <= desc.clientHeight + 2){
+      btn.style.display = 'none';
+    }
+  });
+});
+
+function toggleDesc(btn){
+  var desc = btn.previousElementSibling;
+  if(!desc) return;
+  var expanded = desc.classList.toggle('expanded');
+  btn.textContent = expanded ? 'Скрыть' : 'Показать полностью';
+}
+
 window.addEventListener('scroll', function(){
     var nav = document.getElementById('nav');
     if(window.scrollY > 40){ nav.classList.add('nav-scrolled'); }
@@ -49,7 +80,8 @@ window.addEventListener('scroll', function(){
 
   function lbPhotoUrl(idx){
     var tile = document.querySelector('.mq-tile[data-idx="' + idx + '"]');
-    return tile ? getComputedStyle(tile).backgroundImage : '';
+    var img = tile ? tile.querySelector('img') : null;
+    return img ? 'url("' + img.src + '")' : '';
   }
   function lbRender(){
     document.getElementById('lbImg').style.backgroundImage = lbPhotoUrl(lbIndex);
