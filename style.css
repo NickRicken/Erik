@@ -29,6 +29,15 @@
   .wrap{ max-width:1180px; margin:0 auto; padding:0 40px; }
   a{ color:inherit; text-decoration:none; }
 html.no-scroll, html.no-scroll body{ overflow:hidden; height:100%; }
+
+/* Unified close icon — same construction as the burger's open (X) state */
+.icon-x{ position:relative; display:inline-block; width:20px; height:20px; }
+.icon-x span{
+  position:absolute; left:0; top:50%; width:100%; height:2px;
+  background:currentColor; border-radius:2px;
+}
+.icon-x span:nth-child(1){ transform:translateY(-50%) rotate(45deg); }
+.icon-x span:nth-child(2){ transform:translateY(-50%) rotate(-45deg); }
   img{max-width:100%; display:block;}
 
   /* TOP BAR — wraps season banner + nav so they scroll together as one fixed block */
@@ -287,8 +296,9 @@ html.no-scroll, html.no-scroll body{ overflow:hidden; height:100%; }
   }
   #lbClose{
     position:absolute; top:24px; right:28px;
-    background:none; border:none; color:var(--foam); font-size:34px;
+    background:none; border:none; color:var(--foam);
     line-height:1; cursor:pointer; padding:8px;
+    display:flex; align-items:center; justify-content:center;
   }
   #lbPrevBtn, #lbNextBtn{
     position:absolute; top:50%; transform:translateY(-50%);
@@ -362,8 +372,10 @@ html.no-scroll, html.no-scroll body{ overflow:hidden; height:100%; }
   }
   .modal-close{
     position:absolute; top:18px; right:18px; background:none; border:none; cursor:pointer;
-    font-size:18px; color:var(--steel); line-height:1;
+    color:var(--ink); line-height:1; padding:8px;
+    display:flex; align-items:center; justify-content:center;
   }
+
   .modal-box .eyebrow{ margin-bottom:8px; }
   .modal-box h3{ font-size:22px; margin-bottom:22px; }
   .modal-box form{ gap:14px; }
