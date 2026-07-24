@@ -181,7 +181,7 @@
     display:block; -webkit-line-clamp:unset; overflow:visible;
   }
   .desc-toggle{
-    display:inline-block; background:none; border:none; padding:0; margin-bottom:16px;
+    display:inline-block; align-self:flex-start; background:none; border:none; padding:0; margin-bottom:16px;
     font-family:'Inter',sans-serif; font-size:14.5px; font-weight:400; color:var(--buoy);
     cursor:pointer; text-decoration:none; text-align:left;
   }
@@ -411,4 +411,14 @@
       grid-column:auto !important; grid-row:auto !important;
       flex:0 0 200px !important; width:200px !important; height:200px !important;
     }
+
+    /* Mobile modal: fullscreen, like the burger menu (nav stays visible on top) */
+    #modalOverlay{ padding:0; align-items:stretch; justify-content:stretch; z-index:45; }
+    .modal-box{
+      max-width:none; width:100%; height:100%; border-radius:0;
+      overflow-y:auto; padding:150px 24px 40px;
+    }
+
+    /* Mobile lightbox: photo fills the available width */
+    #lbImg{ width:96vw; height:70vh; }
   }
