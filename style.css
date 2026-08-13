@@ -344,7 +344,7 @@ html.no-scroll, html.no-scroll body{ overflow:hidden; height:100%; }
     font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--steel); letter-spacing:0.08em;
   }
   .divider-or::before, .divider-or::after{ content:''; flex:1; height:1px; background:var(--line); }
-  .channels{ display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; }
+  .channels{ display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; }
   .chan-card{
     border:1px solid var(--line); border-radius:10px; padding:18px 14px;
     display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;
