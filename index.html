@@ -267,15 +267,15 @@
         <form onsubmit="return fakeSubmit(event)">
           <div class="field">
             <label>Имя</label>
-            <input type="text" required placeholder="Как к вам обращаться">
+            <input type="text" name="name" required placeholder="Как к вам обращаться">
           </div>
           <div class="field">
             <label>Телефон или ник в Telegram</label>
-            <input type="text" required placeholder="+7 ... или @username">
+            <input type="text" name="contact" required placeholder="+7 ... или @username">
           </div>
           <div class="field">
             <label>Интересующая модель</label>
-            <select id="modelSelect">
+            <select id="modelSelect" name="model">
               <option>Тонкий Ёрик</option>
               <option>Средний Ёрик</option>
               <option>Толстый Ёрик</option>
@@ -286,7 +286,7 @@
           </div>
           <div class="field">
             <label>Сообщение</label>
-            <textarea class="autogrow" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
+            <textarea class="autogrow" name="message" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
           </div>
           <button type="submit" class="btn-primary submit-btn">Отправить</button>
           <div class="form-success" id="formSuccess">Заявка отправлена — свяжемся с вами в течение дня.</div>
@@ -340,15 +340,15 @@
     <form onsubmit="return modalSubmit(event)">
       <div class="field">
         <label>Имя</label>
-        <input type="text" required placeholder="Как к вам обращаться">
+        <input type="text" name="name" required placeholder="Как к вам обращаться">
       </div>
       <div class="field">
         <label>Телефон или ник в Telegram</label>
-        <input type="text" required placeholder="+7 ... или @username">
+        <input type="text" name="contact" required placeholder="+7 ... или @username">
       </div>
       <div class="field">
         <label>Интересующая модель</label>
-        <select id="modalModelSelect">
+        <select id="modalModelSelect" name="model">
           <option>Тонкий Ёрик</option>
           <option>Средний Ёрик</option>
           <option>Толстый Ёрик</option>
@@ -359,7 +359,7 @@
       </div>
       <div class="field">
         <label>Сообщение</label>
-        <textarea class="autogrow" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
+        <textarea class="autogrow" name="message" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
       </div>
       <button type="submit" class="btn-primary submit-btn" style="margin-top:4px;">Отправить</button>
       <div class="modal-success" id="modalSuccess">Заявка отправлена — свяжемся с вами в течение дня.</div>

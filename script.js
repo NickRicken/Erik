@@ -1,34 +1,3 @@
-/* SEASON BANNER */
-function closeSeasonBanner(){
-  var banner = document.getElementById('seasonBanner');
-  if(banner) banner.style.display = 'none';
-  try{ localStorage.setItem('seasonBannerClosed', '1'); }catch(e){}
-}
-document.addEventListener('DOMContentLoaded', function(){
-  try{
-    if(localStorage.getItem('seasonBannerClosed') === '1'){
-      var b = document.getElementById('seasonBanner');
-      if(b) b.style.display = 'none';
-    }
-  }catch(e){}
-
-  /* DESC TOGGLE — скрываем кнопку "Показать полностью", если текст и так укладывается в 10 строк */
-  document.querySelectorAll('.desc-toggle').forEach(function(btn){
-    var desc = btn.previousElementSibling;
-    if(!desc) return;
-    if(desc.scrollHeight <= desc.clientHeight + 2){
-      btn.style.display = 'none';
-    }
-  });
-});
-
-function toggleDesc(btn){
-  var desc = btn.previousElementSibling;
-  if(!desc) return;
-  var expanded = desc.classList.toggle('expanded');
-  btn.textContent = expanded ? 'Скрыть' : 'Показать полностью';
-}
-
 window.addEventListener('scroll', function(){
     var nav = document.getElementById('nav');
     if(window.scrollY > 40){ nav.classList.add('nav-scrolled'); }
@@ -54,7 +23,6 @@ window.addEventListener('scroll', function(){
     document.getElementById('modalTitle').textContent = name;
     document.getElementById('modalSuccess').style.display = 'none';
     document.getElementById('modalOverlay').classList.add('open');
-    document.documentElement.classList.add('no-scroll');
     document.querySelectorAll('.modal-box textarea.autogrow').forEach(autoGrowTextarea);
     var sel = document.getElementById('modalModelSelect');
     var hasOption = Array.from(sel.options).some(function(o){ return o.value === name; });
@@ -62,17 +30,34 @@ window.addEventListener('scroll', function(){
   }
   function closeModal(){
     document.getElementById('modalOverlay').classList.remove('open');
-    document.documentElement.classList.remove('no-scroll');
+  }
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mljrlwaw';
+
+  function submitToFormspree(e, successId){
+    e.preventDefault();
+    var form = e.target;
+    var data = new FormData(form);
+    fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response){
+      if(response.ok){
+        document.getElementById(successId).style.display = 'block';
+        form.reset();
+      } else {
+        alert('Не получилось отправить заявку. Попробуйте ещё раз или свяжитесь с нами напрямую.');
+      }
+    }).catch(function(){
+      alert('Не получилось отправить заявку. Проверьте соединение и попробуйте ещё раз.');
+    });
+    return false;
   }
   function modalSubmit(e){
-    e.preventDefault();
-    document.getElementById('modalSuccess').style.display = 'block';
-    return false;
+    return submitToFormspree(e, 'modalSuccess');
   }
   function fakeSubmit(e){
-    e.preventDefault();
-    document.getElementById('formSuccess').style.display = 'block';
-    return false;
+    return submitToFormspree(e, 'formSuccess');
   }
 
   /* LIGHTBOX */
@@ -82,8 +67,7 @@ window.addEventListener('scroll', function(){
 
   function lbPhotoUrl(idx){
     var tile = document.querySelector('.mq-tile[data-idx="' + idx + '"]');
-    var img = tile ? tile.querySelector('img') : null;
-    return img ? 'url("' + img.src + '")' : '';
+    return tile ? getComputedStyle(tile).backgroundImage : '';
   }
   function lbRender(){
     document.getElementById('lbImg').style.backgroundImage = lbPhotoUrl(lbIndex);
