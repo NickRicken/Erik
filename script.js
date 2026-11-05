@@ -67,7 +67,10 @@ window.addEventListener('scroll', function(){
 
   function lbPhotoUrl(idx){
     var tile = document.querySelector('.mq-tile[data-idx="' + idx + '"]');
-    return tile ? getComputedStyle(tile).backgroundImage : '';
+    if(!tile) return '';
+    var img = tile.querySelector('img');
+    if(img) return 'url("' + img.getAttribute('src') + '")';
+    return getComputedStyle(tile).backgroundImage;
   }
   function lbRender(){
     document.getElementById('lbImg').style.backgroundImage = lbPhotoUrl(lbIndex);
