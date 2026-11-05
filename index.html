@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ёрик — оригинальные композитные лодки на заказ</title>
 <meta name="description" content="Каяки-сёрфски, лодки на заказ из стекловолокна, карбона, кевлара. Модели для марафонов и гонок, индивидуальный дизайн.">
+<link rel="canonical" href="https://xn--h1aeq1e.xn--p1ai/">
 
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
@@ -13,20 +14,41 @@
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://xn--h1aeq1e.xn--p1ai/">
+<meta property="og:site_name" content="Ёрик">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Ёрик — кастомные каяки-сёрфски">
 <meta property="og:description" content="Каяки-сёрфски, лодки на заказ из стекловолокна, карбона, кевлара. Модели для марафонов и гонок, индивидуальный дизайн.">
-<meta property="og:image" content="images/Hero.jpg">
+<meta property="og:image" content="https://xn--h1aeq1e.xn--p1ai/images/Hero.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ёрик — кастомные каяки-сёрфски">
 <meta name="twitter:description" content="Каяки-сёрфски, лодки на заказ из стекловолокна, карбона, кевлара. Модели для марафонов и гонок, индивидуальный дизайн.">
-<meta name="twitter:image" content="images/Hero.jpg">
+<meta name="twitter:image" content="https://xn--h1aeq1e.xn--p1ai/images/Hero.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ёрик",
+  "url": "https://xn--h1aeq1e.xn--p1ai/",
+  "logo": "https://xn--h1aeq1e.xn--p1ai/images/apple-touch-icon.png",
+  "image": "https://xn--h1aeq1e.xn--p1ai/images/Hero.jpg",
+  "description": "Оригинальные композитные каяки и лодки на заказ из стекловолокна, карбона и кевлара.",
+  "contactPoint": [
+    {"@type": "ContactPoint", "telephone": "+79219774523", "contactType": "sales", "availableLanguage": "ru"},
+    {"@type": "ContactPoint", "telephone": "+79657613986", "contactType": "sales", "availableLanguage": "ru"}
+  ],
+  "sameAs": [
+    "https://t.me/compositeboats",
+    "https://vk.ru/erik_kayaks"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -267,15 +289,15 @@
         <form onsubmit="return fakeSubmit(event)">
           <div class="field">
             <label>Имя</label>
-            <input type="text" required placeholder="Как к вам обращаться">
+            <input type="text" name="name" required placeholder="Как к вам обращаться">
           </div>
           <div class="field">
             <label>Телефон или ник в Telegram</label>
-            <input type="text" required placeholder="+7 ... или @username">
+            <input type="text" name="contact" required placeholder="+7 ... или @username">
           </div>
           <div class="field">
             <label>Интересующая модель</label>
-            <select id="modelSelect">
+            <select id="modelSelect" name="model">
               <option>Тонкий Ёрик</option>
               <option>Средний Ёрик</option>
               <option>Толстый Ёрик</option>
@@ -286,7 +308,7 @@
           </div>
           <div class="field">
             <label>Сообщение</label>
-            <textarea class="autogrow" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
+            <textarea class="autogrow" name="message" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
           </div>
           <button type="submit" class="btn-primary submit-btn">Отправить</button>
           <div class="form-success" id="formSuccess">Заявка отправлена — свяжемся с вами в течение дня.</div>
@@ -340,15 +362,15 @@
     <form onsubmit="return modalSubmit(event)">
       <div class="field">
         <label>Имя</label>
-        <input type="text" required placeholder="Как к вам обращаться">
+        <input type="text" name="name" required placeholder="Как к вам обращаться">
       </div>
       <div class="field">
         <label>Телефон или ник в Telegram</label>
-        <input type="text" required placeholder="+7 ... или @username">
+        <input type="text" name="contact" required placeholder="+7 ... или @username">
       </div>
       <div class="field">
         <label>Интересующая модель</label>
-        <select id="modalModelSelect">
+        <select id="modalModelSelect" name="model">
           <option>Тонкий Ёрик</option>
           <option>Средний Ёрик</option>
           <option>Толстый Ёрик</option>
@@ -359,7 +381,7 @@
       </div>
       <div class="field">
         <label>Сообщение</label>
-        <textarea class="autogrow" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
+        <textarea class="autogrow" name="message" rows="3" placeholder="Пожелания по материалам и дизайну"></textarea>
       </div>
       <button type="submit" class="btn-primary submit-btn" style="margin-top:4px;">Отправить</button>
       <div class="modal-success" id="modalSuccess">Заявка отправлена — свяжемся с вами в течение дня.</div>
