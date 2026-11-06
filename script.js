@@ -19,6 +19,11 @@ window.addEventListener('scroll', function(){
     document.getElementById('burgerBtn').classList.remove('open');
     if(window.scrollY <= 40){ document.getElementById('nav').classList.remove('nav-scrolled'); }
   }
+  function closeSeasonBanner(){
+    var banner = document.getElementById('seasonBanner');
+    if(banner){ banner.style.display = 'none'; }
+    document.body.classList.add('banner-closed');
+  }
   function openModal(name){
     document.getElementById('modalTitle').textContent = name;
     document.getElementById('modalSuccess').style.display = 'none';

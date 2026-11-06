@@ -435,3 +435,15 @@ html.no-scroll, html.no-scroll body{ overflow:hidden; height:100%; }
     /* Mobile lightbox: photo fills the available width */
     #lbImg{ width:96vw; height:70vh; }
   }
+
+  /* When the season banner is closed, tighten the fullscreen mobile menu */
+  @media (max-width: 900px){
+    .banner-closed .mobile-nav{ padding-top:110px; }
+  }
+
+  /* Phones: contact buttons as squares, two per row */
+  @media (max-width: 600px){
+    .channels{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; }
+    .chan-card{ aspect-ratio:1 / 1; justify-content:center; padding:12px; gap:10px; }
+    .chan-card .chan-icon{ width:28px; height:28px; }
+  }
